@@ -1,4 +1,4 @@
-package org.example;
+package bdeb.oscar;
 
 public class Main {
     public static void main(String[] args) {
