@@ -10,7 +10,7 @@ public class Elector {
     *
     *   weight: Relating to the voting value.
     *   name: Name of the Organization.
-    *   awards: List of [TBD] for the Organization.
+    *   awards: List of award categories for the Organization to nominate movies and people for.
     *
     */
     private int weight;
@@ -37,18 +37,6 @@ public class Elector {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    //finds an award by its location in the list
-    public Award findAwardByPos(int pos)
-    {
-        return new Award();
-    }
-
-    //finds an award by its name attribute.
-    public Award findAwardByName(String name)
-    {
-        return new Award();
     }
 
     @Override
