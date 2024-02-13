@@ -14,14 +14,15 @@ public class Vote {
     private int shares;
     private Date execution;
     private Elector owner;
+    private String title;
 
-    public Vote(int shares, Date execution, Elector owner) {
+    public Vote(String nomination, int shares, Date execution, Elector owner) {
         this.shares = shares;
         this.execution = execution;
         this.owner = owner;
     }
 
-    public Vote(int shares, Elector owner) {
+    public Vote(String nomination, int shares, Elector owner) {
         this.shares = shares;
         this.execution = new Date();
         this.owner = owner;
@@ -49,6 +50,14 @@ public class Vote {
 
     public void setOwner(Elector owner) {
         this.owner = owner;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override
