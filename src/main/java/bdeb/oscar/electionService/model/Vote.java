@@ -1,31 +1,36 @@
 package bdeb.oscar.electionService.model;
 
+import bdeb.oscar.awardService.model.Award;
+
 import java.util.Date;
 
 public class Vote {
 
     /*
-    *
-    *   shares: number of count(from the weight) consumed by the voter on this one vote.
-    *   execution: Date of creation/voting.
-    *   owner: the proprietor of this specific vote.
-    *
-    */
+     *
+     *   shares: number of count(from the weight) consumed by the voter on this one vote.
+     *   execution: Date of creation/voting.
+     *   owner: the proprietor of this specific vote.
+     *
+     */
+    private Award award;
     private int shares;
     private Date execution;
-    private Elector owner;
-    private String title;
+    private Elector elector;
 
-    public Vote(String nomination, int shares, Date execution, Elector owner) {
+
+    public Vote(Award award, int shares, Date execution, Elector elector) {
+        this.award = award;
         this.shares = shares;
         this.execution = execution;
-        this.owner = owner;
+        this.elector = elector;
     }
 
-    public Vote(String nomination, int shares, Elector owner) {
+    public Vote(int shares, Elector elector) {
         this.shares = shares;
         this.execution = new Date();
-        this.owner = owner;
+        this.elector = elector;
+        elector.consumeVotes(shares);
     }
 
     public int getShares() {
@@ -44,20 +49,20 @@ public class Vote {
         this.execution = execution;
     }
 
-    public Elector getOwner() {
-        return owner;
+    public Elector getElector() {
+        return elector;
     }
 
-    public void setOwner(Elector owner) {
-        this.owner = owner;
+    public void setElector(Elector elector) {
+        this.elector = elector;
     }
 
-    public String getTitle() {
-        return title;
+    public Award getAward() {
+        return award;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setAward(Award award) {
+        this.award = award;
     }
 
     @Override
@@ -65,7 +70,7 @@ public class Vote {
         return "Vote{" +
                 "shares=" + shares +
                 ", execution=" + execution +
-                ", owner=" + owner +
+                ", owner=" + elector +
                 '}';
     }
 }
